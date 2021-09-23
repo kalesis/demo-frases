@@ -58,4 +58,4 @@ if __name__ == '__main__':
     # crear la BD
     db.create_all()
     # run app
-    app.run(debug=True)
+    app.run(debug=True, port=3000)

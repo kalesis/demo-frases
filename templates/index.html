@@ -10,32 +10,45 @@
 </head>
 <body>
     
-<div class="ui container">
-    <h1 class="ui center aligned header">Frases Celebres</h1>
+<div class="ui container ">
+    
+    <h1 class="ui header">Frases Celebres</h1>
 
-    <form class="ui form" action="/add" method="POST">
-        <div class="field">
-            <a class="ui orange ribbon label heade">Titulo</a>
-            <input type="text" name="title" id="" placeholder="Ingrese la Frase Celebre">
-            <br>
-            <a class="ui orange ribbon label heade">Autor</a>
-            <input type="text" name="autor" id="" placeholder="Ingrese el Autor">
-            <br>
-            <button class="ui blue button" type="submit">Agregar</button>
+    <div class="ui piled segments">
+        {% for frase in frases %}
+        <div class="ui segment">
+            <p class="ui right floated header">
+                <a class="ui red mini button" href="/delete/{{frase.id}}">Eliminar</a>
+            </p>
+            <p class="ui big header">{{ frase.title }}</p>
+            <span class="ui gray label">{{ frase.autor }}</span>
         </div>
-    </form>
-
-    {% for frase in frases %}
-    <div class="ui segment">
-        <p class="ui big header">{{ frase.title }}</p>
-        {% if frase.complete==False %}
-        <span class="ui gray label">Incompleta</span>
-        {% else %}
-        <span class="ui green label">Completa</span>
-        {%endif%}
-        <a class="ui red mini button" href="/delete/{{frase.id}}">Eliminar</a>
+        {% endfor %}
     </div>
-    {% endfor %}
+
+    <div class="ui divider"></div>
+
+    <div class="ui two column centered grid">
+        <div class="column">
+            <h3 class="ui top attached header">Crear Frase</h3>
+            <div class="ui attached segment">
+                <form class="ui form" action="/add" method="POST">
+                    <div class="field">
+                        <a class="ui orange ribbon label heade">Titulo</a>
+                        <input type="text" name="title" id="" placeholder="Ingrese la Frase Celebre">
+                        <br>
+                        <a class="ui orange ribbon label heade">Autor</a>
+                        <input type="text" name="autor" id="" placeholder="Ingrese el Autor">
+                        <br>
+                        <br>
+                        <button class="ui blue button" type="submit">Agregar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
 </div>
 
 </body>
